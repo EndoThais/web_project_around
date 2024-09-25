@@ -25,22 +25,18 @@
         </div>
       </header>
       <main class="content">
-        <section class="content__profile">
+        <section class="profile">
           <img
             class="profile__image"
             src="./images/Jacques_Costeau.jpg"
             alt="foto de Jaques Costeau"
           />
           <div class="profile__info">
-            <h1 class="profile__artist">Jacques Cousteau</h1>
-            <a
-              class="profile__edit-buttom"
-              rel="stylesheet"
-              href="./images/Edit Button.png"
-            ></a>
+            <h2 class="profile__artist">Jacques Cousteau</h2>
+            <button class="profile__edit-btn"></button>
             <p class="profile__url-heading">Explorador</p>
           </div>
-          <button class="profile__form_submit-btn">+</button>
+          <button class="profile__add-btn"></button>
         </section>
         <section class="elements">
           <div class="elements__rectangle">
@@ -49,7 +45,10 @@
               src="./images/1Vale_de_Yosemite.jpg"
               alt="foto do vale de Yosemite"
             />
-            <p class="elements__image-title">Vale de Yosemite</p>
+            <div class="elements__image-rectangle">
+              <p class="elements__image-title">Vale de Yosemite</p>
+              <button class="elements__btn-like"></button>
+            </div>
           </div>
           <div class="elements__rectangle">
             <img
@@ -57,7 +56,10 @@
               src="./images/2Lago_Louise.jpg"
               alt="foto do lago Louise"
             />
-            <p class="elements__image-title">Lago Louise</p>
+            <div class="elements__image-rectangle">
+              <p class="elements__image-title">Lago Louise</p>
+              <button class="elements__btn-like"></button>
+            </div>
           </div>
           <div class="elements__rectangle">
             <img
@@ -65,7 +67,10 @@
               src="./images/3Montanhas Care.jpg"
               alt="foto das montanhas Care"
             />
-            <p class="elements__image-title">Montanhas Care</p>
+            <div class="elements__image-rectangle">
+              <p class="elements__image-title">Montanhas Care</p>
+              <button class="elements__btn-like"></button>
+            </div>
           </div>
           <div class="elements__rectangle">
             <img
@@ -73,7 +78,10 @@
               src="./images/4Latemar.jpg"
               alt="foto do Latemar"
             />
-            <p class="elements__image-title">Latemar</p>
+            <div class="elements__image-rectangle">
+              <p class="elements__image-title">Latemar</p>
+              <button class="elements__btn-like"></button>
+            </div>
           </div>
           <div class="elements__rectangle">
             <img
@@ -81,7 +89,10 @@
               src="./images/5Parque_Nacional.jpg"
               alt="foto do parque Nacional dos EUA"
             />
-            <p class="elements__image-title">Parque Nacional da Vanoise</p>
+            <div class="elements__image-rectangle">
+              <p class="elements__image-title">Parque Nacional da Vanoise</p>
+              <button class="elements__btn-like"></button>
+            </div>
           </div>
           <div class="elements__rectangle">
             <img
@@ -89,7 +100,10 @@
               src="./images/6Lago_di_Braies.jpg"
               alt="foto do lago di Braies"
             />
-            <p class="elements__image-title">Lago di Braies</p>
+            <div class="elements__image-rectangle">
+              <p class="elements__image-title">Lago di Braies</p>
+              <button class="elements__btn-like"></button>
+            </div>
           </div>
         </section>
       </main>
@@ -97,5 +111,33 @@
         <p class="footer__copyright">© 2024 Around The U.S.</p>
       </footer>
     </div>
+    <div class="popup">
+      <div class="popup__rectangle">
+        <button class="popup__btn-close"></button>
+        <form class="popup__form">
+          <h3 class="popup__title">Editar Perfil</h3>
+          <fieldset class="popup__info">
+            <label for="name"></label>
+            <input
+              class="popup__label popup__name"
+              type="text"
+              name=""
+              id="name"
+              placeholder="Nome"
+            />
+            <label for="profession"></label>
+            <input
+              class="popup__label popup__job"
+              type="text"
+              name=""
+              id="profession"
+              placeholder="Sobre Mim"
+            />
+          </fieldset>
+          <button type="submit" class="popup__btn-save">Salvar</button>
+        </form>
+      </div>
+    </div>
+    <script src="./script/script.js"></script>
   </body>
 </html>
