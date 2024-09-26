@@ -1,8 +1,10 @@
 .profile {
-  margin: 0 200px;
+  margin: 0 auto;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  max-width: 880px;
+  gap: 30px;
 }
 
 .profile__image {
@@ -31,11 +33,9 @@
 }
 
 .profile__info {
-  width: 415px;
-  gap: 0px;
+  gap: 18px;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  width: 100%;
 }
 
 .profile__url-heading {
