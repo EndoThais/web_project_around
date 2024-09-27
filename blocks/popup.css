@@ -48,6 +48,7 @@
   font-weight: 900;
   line-height: 29.05px;
   text-align: left;
+  margin: 0;
 }
 
 .popup__btn-save {
@@ -80,4 +81,7 @@
   border: 0;
   border-bottom: 1px solid#000000;
   margin-bottom: 10px;
+  width: 100%;
+  box-sizing: border-box;
+  padding-top: 29.74px;
 }

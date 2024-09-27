@@ -40,73 +40,75 @@
           </div>
           <button class="profile__add-btn"></button>
         </section>
-        <section class="elements">
-          <div class="elements__rectangle">
-            <img
-              class="elements__image"
-              src="./images/1Vale_de_Yosemite.jpg"
-              alt="foto do vale de Yosemite"
-            />
-            <div class="elements__image-rectangle">
-              <p class="elements__image-title">Vale de Yosemite</p>
-              <button class="elements__btn-like"></button>
-            </div>
-          </div>
-          <div class="elements__rectangle">
-            <img
-              class="elements__image"
-              src="./images/2Lago_Louise.jpg"
-              alt="foto do lago Louise"
-            />
-            <div class="elements__image-rectangle">
-              <p class="elements__image-title">Lago Louise</p>
-              <button class="elements__btn-like"></button>
-            </div>
-          </div>
-          <div class="elements__rectangle">
-            <img
-              class="elements__image"
-              src="./images/3Montanhas Care.jpg"
-              alt="foto das montanhas Care"
-            />
-            <div class="elements__image-rectangle">
-              <p class="elements__image-title">Montanhas Care</p>
-              <button class="elements__btn-like"></button>
-            </div>
-          </div>
-          <div class="elements__rectangle">
-            <img
-              class="elements__image"
-              src="./images/4Latemar.jpg"
-              alt="foto do Latemar"
-            />
-            <div class="elements__image-rectangle">
-              <p class="elements__image-title">Latemar</p>
-              <button class="elements__btn-like"></button>
-            </div>
-          </div>
-          <div class="elements__rectangle">
-            <img
-              class="elements__image"
-              src="./images/5Parque_Nacional.jpg"
-              alt="foto do parque Nacional dos EUA"
-            />
-            <div class="elements__image-rectangle">
-              <p class="elements__image-title">Parque Nacional da Vanoise</p>
-              <button class="elements__btn-like"></button>
-            </div>
-          </div>
-          <div class="elements__rectangle">
-            <img
-              class="elements__image"
-              src="./images/6Lago_di_Braies.jpg"
-              alt="foto do lago di Braies"
-            />
-            <div class="elements__image-rectangle">
-              <p class="elements__image-title">Lago di Braies</p>
-              <button class="elements__btn-like"></button>
-            </div>
-          </div>
+        <section class="elements elements__section">
+          <ul class="elements__grid">
+            <li class="elements__rectangle">
+              <img
+                class="elements__image"
+                src="./images/1Vale_de_Yosemite.jpg"
+                alt="foto do vale de Yosemite"
+              />
+              <div class="elements__image-rectangle">
+                <p class="elements__image-title">Vale de Yosemite</p>
+                <button class="elements__btn-like"></button>
+              </div>
+            </li>
+            <li class="elements__rectangle">
+              <img
+                class="elements__image"
+                src="./images/2Lago_Louise.jpg"
+                alt="foto do lago Louise"
+              />
+              <div class="elements__image-rectangle">
+                <p class="elements__image-title">Lago Louise</p>
+                <button class="elements__btn-like"></button>
+              </div>
+            </li>
+            <li class="elements__rectangle">
+              <img
+                class="elements__image"
+                src="./images/3Montanhas Care.jpg"
+                alt="foto das montanhas Care"
+              />
+              <div class="elements__image-rectangle">
+                <p class="elements__image-title">Montanhas Care...</p>
+                <button class="elements__btn-like"></button>
+              </div>
+            </li>
+            <li class="elements__rectangle">
+              <img
+                class="elements__image"
+                src="./images/4Latemar.jpg"
+                alt="foto do Latemar"
+              />
+              <div class="elements__image-rectangle">
+                <p class="elements__image-title">Latemar</p>
+                <button class="elements__btn-like"></button>
+              </div>
+            </li>
+            <li class="elements__rectangle">
+              <img
+                class="elements__image"
+                src="./images/5Parque_Nacional.jpg"
+                alt="foto do parque Nacional dos EUA"
+              />
+              <div class="elements__image-rectangle">
+                <p class="elements__image-title">Parque Nacional da Vanoise</p>
+                <button class="elements__btn-like"></button>
+              </div>
+            </li>
+            <li class="elements__rectangle">
+              <img
+                class="elements__image"
+                src="./images/6Lago_di_Braies.jpg"
+                alt="foto do lago di Braies"
+              />
+              <div class="elements__image-rectangle">
+                <p class="elements__image-title">Lago di Braies</p>
+                <button class="elements__btn-like"></button>
+              </div>
+            </li>
+          </ul>
         </section>
       </main>
       <footer class="footer">
@@ -119,7 +121,6 @@
         <form class="popup__form">
           <h3 class="popup__title">Editar Perfil</h3>
           <fieldset class="popup__info">
-            <label for="name"></label>
             <input
               class="popup__label popup__name"
               type="text"
@@ -127,7 +128,6 @@
               id="name"
               placeholder="Nome"
             />
-            <label for="profession"></label>
             <input
               class="popup__label popup__job"
               type="text"

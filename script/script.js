@@ -2,11 +2,13 @@ let divProfile = document.querySelector(".profile");
 
 //abrir popup:
 let popupProfile = document.querySelector(".popup");
+let page = document.querySelector(".page");
 
 let buttonOpenProfile = document.querySelector(".profile__edit-btn");
 buttonOpenProfile.addEventListener("click", function () {
   //remover o display none;
   popupProfile.classList.add("popup_opened");
+  page.classList.add("overlay");
 });
 
 //fechar popup
@@ -15,6 +17,7 @@ buttonOpenProfile.addEventListener("click", function () {
 let buttonCloseProfile = document.querySelector(".popup__btn-close");
 buttonCloseProfile.addEventListener("click", function () {
   popupProfile.classList.remove("popup_opened");
+  page.classList.remove("overlay");
   //elemento HTML popup para remover o display none;
 });
 
