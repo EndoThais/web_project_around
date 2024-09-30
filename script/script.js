@@ -56,3 +56,8 @@ function handleProfileFormSubmit(evt) {
 // Conecte o handler ao formulário:
 // ele vai observar o evento de submit
 formElement.addEventListener("submit", handleProfileFormSubmit);
+
+let submitCloseProfile = document.querySelector(".popup__btn-save");
+submitCloseProfile.addEventListener("click", function () {
+  popupProfile.classList.remove("popup_opened");
+});
