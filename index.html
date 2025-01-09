@@ -41,75 +41,18 @@
           <button class="profile__add-btn"></button>
         </section>
         <section class="elements elements__section">
-          <ul class="elements__grid">
-            <li class="elements__rectangle">
-              <img
-                class="elements__image"
-                src="./images/1Vale_de_Yosemite.jpg"
-                alt="foto do vale de Yosemite"
-              />
-              <div class="elements__image-rectangle">
-                <p class="elements__image-title">Vale de Yosemite</p>
-                <button class="elements__btn-like"></button>
-              </div>
-            </li>
-            <li class="elements__rectangle">
-              <img
-                class="elements__image"
-                src="./images/2Lago_Louise.jpg"
-                alt="foto do lago Louise"
-              />
-              <div class="elements__image-rectangle">
-                <p class="elements__image-title">Lago Louise</p>
-                <button class="elements__btn-like"></button>
-              </div>
-            </li>
-            <li class="elements__rectangle">
-              <img
-                class="elements__image"
-                src="./images/3Montanhas Care.jpg"
-                alt="foto das montanhas Care"
-              />
-              <div class="elements__image-rectangle">
-                <p class="elements__image-title">Montanhas Care...</p>
-                <button class="elements__btn-like"></button>
-              </div>
-            </li>
-            <li class="elements__rectangle">
-              <img
-                class="elements__image"
-                src="./images/4Latemar.jpg"
-                alt="foto do Latemar"
-              />
-              <div class="elements__image-rectangle">
-                <p class="elements__image-title">Latemar</p>
-                <button class="elements__btn-like"></button>
-              </div>
-            </li>
-            <li class="elements__rectangle">
-              <img
-                class="elements__image"
-                src="./images/5Parque_Nacional.jpg"
-                alt="foto do parque Nacional dos EUA"
-              />
-              <div class="elements__image-rectangle">
-                <p class="elements__image-title">Parque Nacional da Vanoise</p>
-                <button class="elements__btn-like"></button>
-              </div>
-            </li>
-            <li class="elements__rectangle">
-              <img
-                class="elements__image"
-                src="./images/6Lago_di_Braies.jpg"
-                alt="foto do lago di Braies"
-              />
-              <div class="elements__image-rectangle">
-                <p class="elements__image-title">Lago di Braies</p>
-                <button class="elements__btn-like"></button>
-              </div>
-            </li>
-          </ul>
+          <ul class="elements__grid"></ul>
         </section>
+        <template id="template">
+          <li class="elements__rectangle">
+            <button class="elements__btn-delete"></button>
+            <img class="elements__image" src="" alt="" />
+            <div class="elements__image-rectangle">
+              <p class="elements__image-title"></p>
+              <button class="elements__btn-like"></button>
+            </div>
+          </li>
+        </template>
         <div class="popup">
           <div class="popup__rectangle">
             <button class="popup__btn-close"></button>
@@ -117,14 +60,14 @@
               <h3 class="popup__title">Editar Perfil</h3>
               <fieldset class="popup__info">
                 <input
-                  class="popup__label popup__name"
+                  class="popup__input popup__name"
                   type="text"
                   name=""
                   id="name"
                   placeholder="Nome"
                 />
                 <input
-                  class="popup__label popup__job"
+                  class="popup__input popup__job"
                   type="text"
                   name=""
                   id="profession"
@@ -133,6 +76,38 @@
               </fieldset>
               <button type="submit" class="popup__btn-save">Salvar</button>
             </form>
+          </div>
+        </div>
+        <div class="popup popup-add-card">
+          <div class="popup__rectangle">
+            <button class="popup__btn-close"></button>
+            <form class="popup__form-cards">
+              <h3 class="popup__title-cards">Novo Local</h3>
+              <fieldset class="popup__info">
+                <input
+                  class="popup__input popup__card-title"
+                  type="text"
+                  name=""
+                  id="title"
+                  placeholder="Título"
+                />
+                <input
+                  class="popup__input popup__url"
+                  type="text"
+                  name=""
+                  id="url"
+                  placeholder="link de Imagem"
+                />
+              </fieldset>
+              <button type="submit" class="popup__btn-save">Salvar</button>
+            </form>
+          </div>
+        </div>
+        <div class="popup popup-view-image">
+          <div class="popup__container-image-text">
+            <button class="popup__btn-close"></button>
+            <img class="popup__image-view" src="" alt="" />
+            <p class="popup__title-view"></p>
           </div>
         </div>
       </main>

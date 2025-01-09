@@ -78,11 +78,34 @@
   padding: 0;
 }
 
-.popup__label {
+.popup__input {
   border: 0;
   border-bottom: 1px solid#000000;
   margin-bottom: 10px;
   width: 100%;
   box-sizing: border-box;
   padding-top: 29.74px;
+}
+
+.popup__container-image-text {
+  position: relative;
+}
+
+.popup-view-image {
+}
+
+.popup__container-image-text {
+  font-family: Inter;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 14.52px;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  color: #ffffff;
+}
+
+.popup__image-view {
+  max-width: 75vw;
+  max-height: 75vh;
 }
