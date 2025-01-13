@@ -94,12 +94,6 @@
 }
 
 @media screen and (max-width: 1024px) {
-  /* .elements {
-    display: grid;
-    grid-template-columns: auto;
-    padding: 50px;
-  }*/
-
   .elements__image {
     max-width: 100%;
   }
