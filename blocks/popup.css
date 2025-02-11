@@ -89,9 +89,6 @@
 
 .popup__container-image-text {
   position: relative;
-}
-
-.popup__container-image-text {
   font-family: Inter;
   font-size: 12px;
   font-weight: 400;
@@ -105,4 +102,34 @@
 .popup__image-view {
   max-width: 75vw;
   max-height: 75vh;
+}
+
+.popup__name:invalid {
+  border-bottom: 1px solid red;
+}
+
+.popup__name:valid {
+  border-bottom: 1px #000000;
+}
+
+.popup__job:invalid {
+  border-bottom: 1px solid red;
+}
+
+.popup__job:valid {
+  border-bottom: 1px #000000;
+}
+
+.popup__card-title:invalid {
+  border-bottom: 1px solid red;
+}
+
+.popup__card-title:valid {
+  border-bottom: 1px #000000;
+}
+.popup__url:invalid {
+  border-bottom: 1px solid red;
+}
+.popup__url:valid {
+  border-bottom: 1px #000000;
 }

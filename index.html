@@ -56,25 +56,34 @@
         <div class="popup">
           <div class="popup__rectangle">
             <button class="popup__btn-close"></button>
-            <form class="popup__form">
+            <form class="popup__form" novalidate>
               <h3 class="popup__title">Editar Perfil</h3>
               <fieldset class="popup__info">
-                <input
-                  class="popup__input popup__name"
-                  type="text"
-                  name=""
-                  id="name"
-                  placeholder="Nome"
-                  required
-                />
-                <input
-                  class="popup__input popup__job"
-                  type="text"
-                  name=""
-                  id="profession"
-                  placeholder="Sobre Mim"
-                  required
-                />
+                <label class="popup__label">
+                  <input
+                    class="popup__input popup__name"
+                    type="text"
+                    name=""
+                    id="name"
+                    placeholder="Nome"
+                    minlength="2"
+                    maxlength="40"
+                    required />
+                  <span class="form__input-error name-input-error"></span
+                ></label>
+                <label class="popup__label">
+                  <input
+                    class="popup__input popup__job"
+                    type="text"
+                    name=""
+                    id="profession"
+                    placeholder="Sobre Mim"
+                    minlength="2"
+                    maxlength="200"
+                    required
+                  />
+                  <span class="form__input-error profession-input-error"></span>
+                </label>
               </fieldset>
               <button type="submit" class="popup__btn-save">Salvar</button>
             </form>
@@ -83,25 +92,31 @@
         <div class="popup popup-add-card">
           <div class="popup__rectangle">
             <button class="popup__btn-close"></button>
-            <form class="popup__form-cards">
+            <form class="popup__form popup__form-cards" novalidate>
               <h3 class="popup__title-cards">Novo Local</h3>
               <fieldset class="popup__info">
-                <input
-                  class="popup__input popup__card-title"
-                  type="text"
-                  name=""
-                  id="title"
-                  placeholder="Título"
-                  required
-                />
-                <input
-                  class="popup__input popup__url"
-                  type="url"
-                  name=""
-                  id="url"
-                  placeholder="link de Imagem"
-                  required
-                />
+                <label class="popup__label">
+                  <input
+                    class="popup__input popup__card-title"
+                    type="text"
+                    name=""
+                    id="title"
+                    placeholder="Título"
+                    required
+                    minlength="2"
+                    maxlength="30" />
+                  <span class="form__input-error title-input-error"></span
+                ></label>
+                <label class="popup__label">
+                  <input
+                    class="popup__input popup__url"
+                    type="url"
+                    name=""
+                    id="url"
+                    placeholder="link de Imagem"
+                    required />
+                  <span class="form__input-error url-input-error"></span
+                ></label>
               </fieldset>
               <button type="submit" class="popup__btn-save">Salvar</button>
             </form>
@@ -119,6 +134,7 @@
         <p class="footer__copyright">© 2024 Around The U.S.</p>
       </footer>
     </div>
-    <script src="./script/script.js"></script>
+    <script src="./script/index.js"></script>
+    <script src="./script/validate.js"></script>
   </body>
 </html>

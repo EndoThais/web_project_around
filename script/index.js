@@ -7,6 +7,12 @@ const buttonOpenProfile = document.querySelector(".profile__edit-btn");
 buttonOpenProfile.addEventListener("click", function () {
   //remover o display none;
   popupProfile.classList.add("popup_opened");
+  document.addEventListener("click", function (evt) {
+    console.log(evt.target);
+    if (evt.target.classList.contains("popup")) {
+      popupProfile.classList.remove("popup_opened");
+    }
+  });
 });
 
 //fechar popup de editar perfil:
@@ -23,6 +29,12 @@ const buttonOpenAddCard = document.querySelector(".profile__add-btn");
 buttonOpenAddCard.addEventListener("click", function () {
   //remover o display none;
   popupAddCard.classList.add("popup_opened");
+  document.addEventListener("click", function (evt) {
+    console.log(evt.target);
+    if (evt.target.classList.contains("popup")) {
+      popupAddCard.classList.remove("popup_opened");
+    }
+  });
 });
 
 //fechar popup de adicionar card:
@@ -34,6 +46,7 @@ buttonCloseAddCard.addEventListener("click", function () {
 
 // Encontrar o formulário no DOM
 const formElement = document.querySelector(".popup__form"); // Use o método querySelector()
+const formInput = formElement.querySelector(".popup__input");
 
 // Handler do submit
 // ainda não vai enviar para lugar nenhum
@@ -59,14 +72,6 @@ function handleProfileFormSubmit(evt) {
 
   buttonCloseProfile();
 }
-
-// Conecte o handler ao formulário: ele vai observar o evento de submit
-formElement.addEventListener("submit", handleProfileFormSubmit);
-
-let submitCloseProfile = document.querySelector(".popup__btn-save");
-submitCloseProfile.addEventListener("click", function () {
-  popupProfile.classList.remove("popup_opened");
-});
 
 const initialCards = [
   {
@@ -172,3 +177,81 @@ function addNewImageCard(evt) {
 }
 
 formAddCard.addEventListener("submit", addNewImageCard);
+
+// Conecte o handler ao formulário: ele vai observar o evento de submit
+formElement.addEventListener("submit", handleProfileFormSubmit);
+
+let submitCloseProfile = document.querySelector(".popup__btn-save");
+submitCloseProfile.addEventListener("click", function () {
+  popupProfile.classList.remove("popup_opened");
+});
+
+const formList = document.querySelectorAll(".popup__form");
+
+formList.forEach(function (formElement) {
+  console.log("formELement", formElement);
+  formElement.addEventListener("submit", function (evt) {
+    evt.preventDefault();
+    console.log("ok");
+  });
+  const inputList = formElement.querySelectorAll(".popup__input");
+  inputList.forEach(function (inputElement) {
+    inputElement.addEventListener("input", function () {
+      checkInputValidity(inputElement, formElement);
+      console.log("entrou");
+    });
+  });
+});
+
+//desativar botão
+const setEventListeners = (formElement) => {
+  const inputList = Array.from(formElement.querySelectorAll(".popup__input"));
+  const buttonElement = formElement.querySelector(".popup__btn-save");
+  console.log("formElement", formElement);
+  console.log("buttonElement", buttonElement);
+
+  const hasInvalidInput = (inputList) => {
+    return inputList.some((inputElement) => {
+      return !inputElement.validity.valid;
+    });
+  };
+
+  const toggleButtonState = (inputList, buttonElement) => {
+    if (hasInvalidInput(inputList)) {
+      buttonElement.classList.add("form__button_inactive");
+    } else {
+      buttonElement.classList.remove("form__button_inactive");
+    }
+  };
+
+  toggleButtonState(inputList, buttonElement);
+  inputList.forEach((inputElement) => {
+    inputElement.addEventListener("input", function () {
+      checkInputValidity(formElement, inputElement);
+      toggleButtonState(inputList, buttonElement);
+    });
+  });
+};
+
+const enableValidation = () => {
+  const formList = Array.from(document.querySelectorAll(".popup__form"));
+  formList.forEach((formElement) => {
+    formElement.addEventListener("submit", function (evt) {
+      evt.preventDefault();
+    });
+
+    setEventListeners(formElement);
+  });
+};
+
+enableValidation();
+
+//fechar popup com qualquer tecla
+
+document.addEventListener("keydown", function (evt) {
+  console.log(evt.key);
+  if (evt.key === "Escape") {
+    popupProfile.classList.remove("popup_opened");
+    popupAddCard.classList.remove("popup_opened");
+  }
+});
