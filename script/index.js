@@ -219,15 +219,18 @@ const setEventListeners = (formElement) => {
   const toggleButtonState = (inputList, buttonElement) => {
     if (hasInvalidInput(inputList)) {
       buttonElement.classList.add("form__button_inactive");
+      buttonElement.disabled = true;
     } else {
       buttonElement.classList.remove("form__button_inactive");
+      buttonElement.disabled = false;
+      console.log("ok");
     }
   };
 
   toggleButtonState(inputList, buttonElement);
   inputList.forEach((inputElement) => {
     inputElement.addEventListener("input", function () {
-      checkInputValidity(formElement, inputElement);
+      checkInputValidity(inputElement, formElement);
       toggleButtonState(inputList, buttonElement);
     });
   });
