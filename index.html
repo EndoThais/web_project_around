@@ -53,17 +53,17 @@
             </div>
           </li>
         </template>
-        <div class="popup">
+        <div class="popup popup__profile">
           <div class="popup__rectangle">
             <button class="popup__btn-close"></button>
-            <form class="popup__form" novalidate>
+            <form class="popup__form" id="user-form" novalidate>
               <h3 class="popup__title">Editar Perfil</h3>
               <fieldset class="popup__info">
                 <label class="popup__label">
                   <input
                     class="popup__input popup__name"
                     type="text"
-                    name=""
+                    name="name"
                     id="name"
                     placeholder="Nome"
                     minlength="2"
@@ -75,7 +75,7 @@
                   <input
                     class="popup__input popup__job"
                     type="text"
-                    name=""
+                    name="about"
                     id="profession"
                     placeholder="Sobre Mim"
                     minlength="2"
@@ -92,14 +92,18 @@
         <div class="popup popup-add-card">
           <div class="popup__rectangle">
             <button class="popup__btn-close"></button>
-            <form class="popup__form popup__form-cards" novalidate>
+            <form
+              class="popup__form popup__form-cards"
+              id="card-form"
+              novalidate
+            >
               <h3 class="popup__title-cards">Novo Local</h3>
               <fieldset class="popup__info">
                 <label class="popup__label">
                   <input
                     class="popup__input popup__card-title"
                     type="text"
-                    name=""
+                    name="name"
                     id="title"
                     placeholder="Título"
                     required
@@ -111,7 +115,7 @@
                   <input
                     class="popup__input popup__url"
                     type="url"
-                    name=""
+                    name="link"
                     id="url"
                     placeholder="link de Imagem"
                     required />
@@ -134,7 +138,9 @@
         <p class="footer__copyright">© 2024 Around The U.S.</p>
       </footer>
     </div>
-    <script src="./script/index.js"></script>
-    <script src="./script/validate.js"></script>
+    <script type="module" src="./script/index.js"></script>
+    <script type="module" src="./script/Card.js"></script>
+    <script type="module" src="./script/FormValidator.js"></script>
+    <script type="module" src="./script/utils.js"></script>
   </body>
 </html>
