@@ -42,7 +42,7 @@ export default class Card {
       this._card.name;
     const imageElement = this._cardElement.querySelector(".elements__image");
     imageElement.src = this._card.link;
-    imageElement.alt = `Imagem do ${this._card.name}`;
+    imageElement.alt = `${this._card.name}`;
     imageElement.addEventListener("click", () => {
       this.openImagePopup(this._card.link, this._card.name);
     });

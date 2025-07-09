@@ -43,6 +43,10 @@
   opacity: 80%;
 }
 
+.popup__input-error {
+  color: red;
+}
+
 .popup__title {
   font-family: "Inter";
   font-size: 24px;

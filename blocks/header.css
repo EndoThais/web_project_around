@@ -11,10 +11,9 @@
   box-sizing: border-box;
 }
 
-.header__container {
-  display: flex;
-  align-items: flex-start;
-  flex-direction: column;
+.header__logo {
+  width: 173px;
+  height: 33px;
 }
 
 @media screen and (max-width: 1024px) {
@@ -22,7 +21,4 @@
     max-width: 90%;
     margin-left: 27px;
   }
-}
-
-@media screen and (max-width: 540px) {
 }
