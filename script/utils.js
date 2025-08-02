@@ -1,20 +1,31 @@
 import Card from "./Card.js";
-import { section, popupWithImage } from "./index.js";
+import { section, popupWithImage, popupConfirmDelete } from "./index.js";
 import UserInfo from "./UserInfo.js";
+import api from "./api.js";
 
 const userInfo = new UserInfo({
   name: ".profile__artist",
   job: ".profile__url-heading",
+  avatar: ".profile__image",
+});
+
+api.getUserInfo().then((result) => {
+  userInfo.setUserInfo({
+    ...result,
+    job: result.about,
+  });
 });
 
 // Selecione os elementos aos quais os valores dos campos serão inseridos
 const nameElement = document.querySelector(".profile__artist");
 const jobElement = document.querySelector(".profile__url-heading");
+const avatarElement = document.querySelector(".profile__image");
 
 // Insira novos valores usando a propriedade textContent
-const { name, job } = userInfo.getUserInfo();
+const { name, job, avatar } = userInfo.getUserInfo();
 nameElement.textContent = name;
 jobElement.textContent = job;
+avatarElement.src = avatar;
 
 // Handler do submit
 // ainda não vai enviar para lugar nenhum
@@ -23,35 +34,15 @@ export function handleProfileFormSubmit(values) {
   const name = values.name;
   const job = values.about;
 
-  userInfo.setUserInfo({ name, job });
+  return api
+    .editUserInfo({
+      name,
+      about: job,
+    })
+    .then(() => {
+      userInfo.setUserInfo({ name, job, avatar: avatarElement.src });
+    });
 }
-
-export const initialCards = [
-  {
-    name: "Vale de Yosemite",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/web-code/moved_yosemite.jpg",
-  },
-  {
-    name: "Lago Louise",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/web-code/moved_lake-louise.jpg",
-  },
-  {
-    name: "Montanhas Carecas",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/web-code/moved_bald-mountains.jpg",
-  },
-  {
-    name: "Latemar",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/web-code/moved_latemar.jpg",
-  },
-  {
-    name: "Parque Nacional da Vanoise ",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/web-code/moved_vanoise.jpg",
-  },
-  {
-    name: "Lago di Braies",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/web-code/moved_lago.jpg",
-  },
-];
 
 //Adicionar um novo cartão
 
@@ -65,9 +56,27 @@ export function addNewImageCard(values) {
       link: imageUrl,
     };
 
-    const cardElement = new Card(newCard, "#template", (imgSrc, imgText) =>
-      popupWithImage.open(imgSrc, imgText)
-    ).generateCard();
-    section.addNewItem(cardElement);
+    return api.addNewCards(newCard).then((card) => {
+      console.log(card);
+      const cardElement = new Card(
+        newCard,
+        card._id,
+        card.isLiked,
+        "#template",
+        (imgSrc, imgText) => popupWithImage.open(imgSrc, imgText),
+        (cardId) =>
+          card.isLiked ? api.removeLike(cardId) : api.addLike(cardId),
+        () => {
+          popupConfirmDelete.open(cardElement, card._id);
+        }
+      ).generateCard();
+      section.addNewItem(cardElement);
+    });
   }
 }
+
+export const addNewImgProfile = (values) => {
+  return api.editProfilePhoto({ avatar: values.link }).then(() => {
+    userInfo.setUserAvatar({ avatar: values.link });
+  });
+};

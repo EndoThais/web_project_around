@@ -21,6 +21,28 @@
   border-radius: 10px;
 }
 
+.popup__confirm-rectangle {
+  max-width: 430px;
+  min-height: 181px;
+  padding: 34px 36px;
+  background-color: white;
+  position: relative;
+  box-sizing: border-box;
+  width: 100%;
+  border-radius: 10px;
+}
+
+.popup__add-img-rectangle {
+  max-width: 430px;
+  max-height: 272px;
+  padding: 34px 36px;
+  background-color: white;
+  position: relative;
+  box-sizing: border-box;
+  width: 100%;
+  border-radius: 10px;
+}
+
 .popup_opened {
   display: flex;
 }
@@ -56,6 +78,15 @@
   margin: 0;
 }
 
+.popup_title-cards_avatar {
+  margin: 0;
+  margin-bottom: 54px;
+}
+
+.popup__confirm-title {
+  margin-bottom: 38px;
+}
+
 .popup__btn-save {
   background-color: #000000;
   color: white;
@@ -74,6 +105,10 @@
   margin-top: 27px;
 }
 
+.popup__form-img {
+  margin-top: 0;
+}
+
 .popup__info {
   border: none;
   display: flex;
@@ -89,6 +124,10 @@
   width: 100%;
   box-sizing: border-box;
   padding-top: 29.74px;
+}
+
+.popup__input_avatar {
+  padding: 0;
 }
 
 .popup__container-image-text {

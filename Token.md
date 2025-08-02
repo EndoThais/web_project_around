@@ -1,0 +1,1 @@
+{"user":{"name":"Jacques Cousteau","about":"Explorador","avatar":"https://practicum-content.s3.us-west-1.amazonaws.com/frontend-developer/common/avatar.jpg","_id":"dae2985ee6fab973e6ee5edb"},"token":"f8b85705-8bfc-4896-b227-81173b89b6c6"}

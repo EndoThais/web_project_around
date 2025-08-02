@@ -1,8 +1,20 @@
 export default class Card {
-  constructor(card, cardSelector, openPopupImage) {
+  constructor(
+    card,
+    cardId,
+    cardIsLiked,
+    cardSelector,
+    openPopupImage,
+    handleLike,
+    handleDelete
+  ) {
     this._card = card;
+    this._cardId = cardId;
+    this._cardIsLiked = cardIsLiked;
     this._cardSelector = cardSelector;
     this._openPopupImage = openPopupImage;
+    this._handleLike = handleLike;
+    this._handleDelete = handleDelete;
   }
 
   _getTemplate() {
@@ -15,10 +27,9 @@ export default class Card {
   }
 
   _handleLikeButton() {
-    const likeButton = this._cardElement.querySelector(".elements__btn-like");
-
-    likeButton.addEventListener("click", () => {
-      likeButton.classList.toggle("elements__btn-like-active");
+    this._likeButton.addEventListener("click", () => {
+      this._likeButton.classList.toggle("elements__btn-like-active");
+      this._handleLike(this._cardId);
     });
   }
 
@@ -28,7 +39,7 @@ export default class Card {
     );
 
     deleteButton.addEventListener("click", () => {
-      this._cardElement.remove();
+      this._handleDelete();
     });
   }
 
@@ -38,6 +49,7 @@ export default class Card {
 
   generateCard() {
     this._cardElement = this._getTemplate();
+    this._likeButton = this._cardElement.querySelector(".elements__btn-like");
     this._cardElement.querySelector(".elements__image-title").textContent =
       this._card.name;
     const imageElement = this._cardElement.querySelector(".elements__image");
@@ -46,6 +58,9 @@ export default class Card {
     imageElement.addEventListener("click", () => {
       this.openImagePopup(this._card.link, this._card.name);
     });
+
+    if (this._cardIsLiked)
+      this._likeButton.classList.add("elements__btn-like-active");
 
     this._setEventListener();
 

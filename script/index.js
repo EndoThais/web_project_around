@@ -4,10 +4,12 @@ import Section from "./Section.js";
 import {
   handleProfileFormSubmit,
   addNewImageCard,
-  initialCards,
+  addNewImgProfile,
 } from "./utils.js";
 import PopupWithImage from "./PopupWithImage.js";
 import PopupWithForm from "./PopupWithForm.js";
+import PopupWithConfirmation from "./PopupWithConfirmation.js";
+import api from "./api.js";
 const userForm = document.querySelector("#user-form");
 const cardForm = document.querySelector("#card-form");
 
@@ -28,21 +30,41 @@ cardFormValidator.enableValidation();
 export const popupWithImage = new PopupWithImage(".popup-view-image");
 popupWithImage.setEventListeners();
 
-export const section = new Section(
-  {
-    items: initialCards,
-    renderer: (card) => {
-      section.addItem(
-        new Card(card, "#template", (imgSrc, imgText) =>
-          popupWithImage.open(imgSrc, imgText)
-        ).generateCard()
-      );
-    },
-  },
-  ".elements"
-);
+export const popupConfirmDelete = new PopupWithConfirmation((card, cardId) => {
+  return api.deleteCard(cardId).then(() => {
+    card.remove();
+  });
+}, ".popup-confirm");
 
-section.renderer();
+popupConfirmDelete.setEventListeners();
+
+export let section;
+
+api.getInitialCards().then((result) => {
+  section = new Section(
+    {
+      items: result,
+      renderer: (card) => {
+        const cardElement = new Card(
+          card,
+          card._id,
+          card.isLiked,
+          "#template",
+          (imgSrc, imgText) => popupWithImage.open(imgSrc, imgText),
+          (cardId) =>
+            card.isLiked ? api.removeLike(cardId) : api.addLike(cardId),
+          () => {
+            popupConfirmDelete.open(cardElement, card._id);
+          }
+        ).generateCard();
+        section.addItem(cardElement);
+      },
+    },
+    ".elements"
+  );
+
+  section.renderer();
+});
 
 const profileOpenPopup = document.querySelector(".profile__edit-btn");
 const AddCardOpenPopup = document.querySelector(".profile__add-btn");
@@ -60,3 +82,11 @@ const popupAddCardForm = new PopupWithForm(addNewImageCard, ".popup-add-card");
 AddCardOpenPopup.addEventListener("click", () => popupAddCardForm.open());
 
 popupAddCardForm.setEventListeners();
+
+const openEditAvatarPopup = document.querySelector(".profile__edit-avatar");
+
+const popupEditAvatar = new PopupWithForm(addNewImgProfile, ".popup-add-img");
+
+popupEditAvatar.setEventListeners();
+
+openEditAvatarPopup.addEventListener("click", () => popupEditAvatar.open());
