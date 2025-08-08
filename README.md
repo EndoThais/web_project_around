@@ -10,4 +10,6 @@ Tecnologias utilizadas:
 
 Foi utilizado tecnologias de HTML, CSS e JavaScript bem estruturadas, foi utilizado o web design adaptativo, a leitura de FIGMA e implementado o uso de formulário no sistema PopUp, incluindo o uso de manipulação de eventos para o desenvolvimento do projeto. 
 
+Também foi implementado o uso de apis, tornando o projeto interativo com o servidor.
+
 GitHub: https://endothais.github.io/web_project_around/
