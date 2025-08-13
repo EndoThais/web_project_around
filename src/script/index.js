@@ -5,6 +5,7 @@ import {
   handleProfileFormSubmit,
   addNewImageCard,
   addNewImgProfile,
+  createCard,
 } from "./utils.js";
 import PopupWithImage from "./PopupWithImage.js";
 import PopupWithForm from "./PopupWithForm.js";
@@ -12,6 +13,7 @@ import PopupWithConfirmation from "./PopupWithConfirmation.js";
 import api from "./api.js";
 const userForm = document.querySelector("#user-form");
 const cardForm = document.querySelector("#card-form");
+const avatarForm = document.querySelector("#avatar-form");
 
 const config = {
   form: ".popup__form",
@@ -26,6 +28,9 @@ profileFormValidator.enableValidation();
 
 const cardFormValidator = new FormValidator(config, cardForm);
 cardFormValidator.enableValidation();
+
+const avatarFormValidator = new FormValidator(config, avatarForm);
+avatarFormValidator.enableValidation();
 
 export const popupWithImage = new PopupWithImage(".popup-view-image");
 popupWithImage.setEventListeners();
@@ -44,21 +49,7 @@ api.getInitialCards().then((result) => {
   section = new Section(
     {
       items: result,
-      renderer: (card) => {
-        const cardElement = new Card(
-          card,
-          card._id,
-          card.isLiked,
-          "#template",
-          (imgSrc, imgText) => popupWithImage.open(imgSrc, imgText),
-          (cardId) =>
-            card.isLiked ? api.removeLike(cardId) : api.addLike(cardId),
-          () => {
-            popupConfirmDelete.open(cardElement, card._id);
-          }
-        ).generateCard();
-        section.addItem(cardElement);
-      },
+      renderer: createCard,
     },
     ".elements"
   );

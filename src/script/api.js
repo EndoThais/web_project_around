@@ -5,8 +5,15 @@ class Api {
     this._headers = options.headers;
   }
 
+  _makeRequest(url, payload) {
+    if (payload) {
+      return fetch(url, payload);
+    }
+    return fetch(url);
+  }
+
   getInitialCards() {
-    return fetch(`${this._baseUrl}/cards`, {
+    return this._makeRequest(`${this._baseUrl}/cards`, {
       headers: this._headers,
     })
       .then((res) => {
@@ -24,7 +31,7 @@ class Api {
   }
 
   getUserInfo() {
-    return fetch(`${this._baseUrl}/users/me`, {
+    return this._makeRequest(`${this._baseUrl}/users/me`, {
       headers: this._headers,
     })
       .then((res) => {
@@ -42,7 +49,7 @@ class Api {
   }
 
   editUserInfo({ name, about }) {
-    return fetch(`${this._baseUrl}/users/me`, {
+    return this._makeRequest(`${this._baseUrl}/users/me`, {
       method: "PATCH",
       headers: this._headers,
       body: JSON.stringify({
@@ -65,7 +72,7 @@ class Api {
   }
 
   addNewCards({ name, link }) {
-    return fetch(`${this._baseUrl}/cards`, {
+    return this._makeRequest(`${this._baseUrl}/cards`, {
       method: "POST",
       headers: this._headers,
       body: JSON.stringify({
@@ -88,7 +95,7 @@ class Api {
   }
 
   addLike(cardId) {
-    return fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
+    return this._makeRequest(`${this._baseUrl}/cards/${cardId}/likes`, {
       method: "PUT",
       headers: this._headers,
     })
@@ -107,7 +114,7 @@ class Api {
   }
 
   removeLike(cardId) {
-    return fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
+    return this._makeRequest(`${this._baseUrl}/cards/${cardId}/likes`, {
       method: "DELETE",
       headers: this._headers,
     })
@@ -126,7 +133,7 @@ class Api {
   }
 
   deleteCard(cardId) {
-    return fetch(`${this._baseUrl}/cards/${cardId}`, {
+    return this._makeRequest(`${this._baseUrl}/cards/${cardId}`, {
       method: "DELETE",
       headers: this._headers,
     })
@@ -145,7 +152,7 @@ class Api {
   }
 
   editProfilePhoto({ avatar }) {
-    return fetch(`${this._baseUrl}/users/me/avatar`, {
+    return this._makeRequest(`${this._baseUrl}/users/me/avatar`, {
       method: "PATCH",
       headers: this._headers,
       body: JSON.stringify({

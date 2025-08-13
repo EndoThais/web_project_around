@@ -44,6 +44,21 @@ export function handleProfileFormSubmit(values) {
     });
 }
 
+export const createCard = (card) => {
+  const cardElement = new Card(
+    card,
+    card._id,
+    card.isLiked,
+    "#template",
+    (imgSrc, imgText) => popupWithImage.open(imgSrc, imgText),
+    (cardId) => (card.isLiked ? api.removeLike(cardId) : api.addLike(cardId)),
+    () => {
+      popupConfirmDelete.open(cardElement, card._id);
+    }
+  ).generateCard();
+  section.addNewItem(cardElement);
+};
+
 //Adicionar um novo cartão
 
 export function addNewImageCard(values) {
@@ -56,22 +71,7 @@ export function addNewImageCard(values) {
       link: imageUrl,
     };
 
-    return api.addNewCards(newCard).then((card) => {
-      console.log(card);
-      const cardElement = new Card(
-        newCard,
-        card._id,
-        card.isLiked,
-        "#template",
-        (imgSrc, imgText) => popupWithImage.open(imgSrc, imgText),
-        (cardId) =>
-          card.isLiked ? api.removeLike(cardId) : api.addLike(cardId),
-        () => {
-          popupConfirmDelete.open(cardElement, card._id);
-        }
-      ).generateCard();
-      section.addNewItem(cardElement);
-    });
+    return api.addNewCards(newCard).then(createCard);
   }
 }
 
